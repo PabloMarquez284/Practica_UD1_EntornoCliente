@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Panel Informativo del Evento</title>
+        <link rel="stylesheet" href="public/css/estilos.css">
+        <script src="src/js/panel.js" defer></script>
+    </head>
+    <body>
+        <main>
+            <section id="sec-panel-resumen">
+                <h2>Resumen del Evento</h2>
+                <span id="panel-estado">Sin inscripciones</span>
+                <ul id="panel-datos" hidden>
+                    <li><b>Total inscritos:</b> <span id="panel-total">0</span></li>
+                    <li><b>Presenciales:</b> <span id="panel-presenciales">0</span></li>
+                    <li><b>Online:</b> <span id="panel-online">0</span></li>
+                    <li><b>Última inscripción:</b> <span id="panel-ultimo-nombre">-</span> (<span id="panel-ultimo-fecha">-</span>)</li>
+                </ul>
+            </section>
+        </main>
+    </body>
+</html>

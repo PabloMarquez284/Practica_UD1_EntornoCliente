@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayuda e Información del Navegador</title>
+    <link rel="stylesheet" href="public/css/estilos.css">
+    <script src="src/js/ayuda.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <h1>Guía de Ayuda de la Aplicación</h1>
+        </header>
+
+        <main>
+            <section>
+                <h2>Uso de la Aplicación</h2>
+                <article>
+                    <h3>Alta de participantes</h3>
+                    <span>Rellene el formulario principal indicando nombre, edad, tipo de participante, modalidad y años de experiencia para añadir un nuevo participante a la memoria de la aplicación.</span>
+                </article>
+
+                <article>
+                    <h3>Importación y Exportación</h3>
+                    <span>Utilice la sección JSON para obtener una copia de respaldo de los datos o para cargar registros externos validando la coherencia del formato.</span>
+                </article>
+                
+                <article>
+                    <h3>Preferencias</h3>
+                    <span>Puede cambiar el tema de color y el tamaño de texto. Las opciones seleccionadas se mantendrán durante 30 días mediante cookies.</span>
+                </article>
+            </section>
+
+            <section id="sec-info-navegador">
+                <h2>Información del Navegador y Entorno</h2>
+                <ul>
+                    <li><b>Idioma del navegador:</b> <span id="nav-idioma">Cargando...</span></li>
+                    <li><b>Origen (Location Origin):</b> <span id="nav-origen">Cargando...</span></li>
+                    <li><b>Resolución de pantalla:</b> <span id="nav-resolucion">Cargando...</span></li>
+                </ul>
+            </section>
+
+            <article>
+                <button type="button" id="btn-cerrar-ventana">Cerrar esta ventana</button>
+            </article>
+        </main>
+    </body>
+</html>

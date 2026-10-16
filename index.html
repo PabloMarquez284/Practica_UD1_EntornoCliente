@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gestión de Participantes - Evento Tecnológico</title>
+        <link rel="stylesheet" href="public/css/estilos.css">
+        <script src="src/js/datos.js" defer></script>
+        <script src="src/js/app.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <h1>Gestor de Participantes</h1>
+
+            <!-- Controles de Preferencias de la Aplicación -->
+            <section id="sec-preferencias" aria-label="Preferencias de usuario">
+                <h2>Preferencias</h2>
+                <form id="form-preferencias">
+                    <label for="select-tema">Tema:</label>
+                    <select id="select-tema" name="tema">
+                        <option value="" selected hidden></option>
+                        <option value="claro">Claro</option>
+                        <option value="oscuro">Oscuro</option>
+                    </select>
+
+                    <label for="select-tamano">Tamaño de fuente:</label>
+                    <select id="select-tamano" name="tamano">
+                        <option value="" selected hidden></option>
+                        <option value="normal">Normal</option>
+                        <option value="grande">Grande</option>
+                    </select>
+
+                    <button type="button" id="btn-guardar-pref">Guardar preferencias</button>
+                    <button type="button" id="btn-restablecer-pref">Restablecer</button>
+                </form>
+            </section>
+
+            <!-- Botón de Ayuda Externa -->
+            <nav aria-label="Navegación de ayuda">
+                <button type="button" id="btn-abrir-ayuda">Ayuda</button>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Formulario de Alta de Participantes -->
+            <section id="sec-alta">
+                <h2>Alta de Participante</h2>
+
+                <span id="mensaje-error-form" hidden></span>
+
+                <form id="form-alta" novalidate>
+                    <article>
+                        <label for="input-nombre">Nombre completo:</label>
+                        <input type="text" id="input-nombre" name="nombre">
+                    </article>
+
+                    <article>
+                        <label for="input-edad">Edad:</label>
+                        <input type="text" id="input-edad" name="edad">
+                    </article>
+
+                    <article>
+                        <label for="select-tipo">Tipo de participante:</label>
+                        <select id="select-tipo" name="tipo">
+                            <option value="" selected hidden></option>
+                            <option value="estudiante">Estudiante</option>
+                            <option value="profesional">Profesional</option>
+                            <option value="invitado">Invitado</option>
+                        </select>
+                    </article>
+
+                    <article>
+                        <label for="select-modalidad">Modalidad:</label>
+                        <select id="select-modalidad" name="modalidad">
+                            <option value="" selected hidden></option>
+                            <option value="presencial">Presencial</option>
+                            <option value="online">Online</option>
+                        </select>
+                    </article>
+
+                    <article>
+                        <label for="input-experiencia">Años de experiencia:</label>
+                        <input type="text" id="input-experiencia" name="experiencia">
+                    </article>
+
+                    <button type="submit" id="btn-alta">Dar de alta</button>
+                </form>
+            </section>
+
+            <!-- Búsqueda y Filtros -->
+            <section id="sec-filtros">
+                <h2>Búsqueda y Filtros</h2>
+                <form id="form-filtros">
+                    <article>
+                        <label for="input-buscar-nombre">Buscar por nombre:</label>
+                        <input type="search" id="input-buscar-nombre" placeholder="Escribe para buscar...">
+                    </article>
+
+                    <article>
+                        <label for="select-filtro-modalidad">Filtrar por modalidad:</label>
+                        <select id="select-filtro-modalidad">
+                            <option value="" selected hidden></option>
+                            <option value="todas">Todas</option>
+                            <option value="presencial">Presencial</option>
+                            <option value="online">Online</option>
+                        </select>
+                    </article>
+                </form>
+            </section>
+
+            <!-- Listado de Participantes -->
+            <section id="sec-listado">
+                <h2>Listado de Participantes</h2>
+                <span id="mensaje-busqueda-vacia" hidden>No hay coincidencias con los criterios seleccionados.</span>
+
+                <!-- JS insertará dinámicamente las tarjetas (<article>) aquí -->
+                <section id="contenedor-tarjetas">
+                </section>
+            </section>
+
+            <!-- Estadísticas -->
+            <section id="sec-estadisticas">
+                <h2>Estadísticas del Evento</h2>
+                <ul>
+                    <li><b>Total de participantes:</b> <span id="stat-total">Sin datos</span></li>
+                    <li><b>Menores de edad (&lt;18):</b> <span id="stat-menores">Sin datos</span></li>
+                    <li><b>Mayores de edad (&ge;18):</b> <span id="stat-mayores">Sin datos</span></li>
+                    <li><b>Edad media:</b> <span id="stat-edad-media">Sin datos</span></li>
+                    <li><b>Edad mínima:</b> <span id="stat-edad-minima">Sin datos</span></li>
+                    <li><b>Edad máxima:</b> <span id="stat-edad-maxima">Sin datos</span></li>
+                    <li><b>Modalidad Presencial:</b> <span id="stat-mod-presencial">Sin datos</span></li>
+                    <li><b>Modalidad Online:</b> <span id="stat-mod-online">Sin datos</span></li>
+                    <li><b>Tipo Estudiante:</b> <span id="stat-tipo-estudiante">Sin datos</span></li>
+                    <li><b>Tipo Profesional:</b> <span id="stat-tipo-profesional">Sin datos</span></li>
+                    <li><b>Tipo Invitado:</b> <span id="stat-tipo-invitado">Sin datos</span></li>
+                    <li><b>Experiencia media (Presenciales):</b> <span id="stat-exp-media-presencial">Sin datos</span></li>
+                    <li><b>Primer menor de edad registrado:</b> <span id="stat-primer-menor">Sin datos</span></li>
+                </ul>
+            </section>
+
+            <!-- Gestión de Datos JSON -->
+            <section id="sec-json">
+                <h2>Gestión de Datos (JSON)</h2>
+                <article>
+                    <label for="textarea-json">Colección de datos en formato JSON:</label><br>
+                    <textarea id="textarea-json" rows="8" cols="60" placeholder="Exporta o pega datos JSON aquí..."></textarea>
+                </article>
+
+                <article>
+                    <button type="button" id="btn-exportar-json">Exportar JSON</button>
+                    <button type="button" id="btn-importar-json">Importar JSON</button>
+                </article>
+
+                <span id="mensaje-error-json" hidden></span>
+            </section>
+
+            <!-- Panel Informativo (iframe) -->
+            <section id="sec-iframe">
+                <h2>Panel Informativo en Tiempo Real</h2>
+                <iframe src="panel.html" id="iframe-panel" title="Panel resumen del evento con métricas en tiempo real"></iframe>
+            </section>
+        </main>
+
+        <footer>
+            <article>
+            <span>&copy; 2026 Gestor de Participantes - DWEC UD1</span>
+            </article>
+        </footer>
+    </body>
+</html>
