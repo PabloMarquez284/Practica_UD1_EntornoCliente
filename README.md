@@ -4,7 +4,7 @@ Esta práctica consta de desarrollar una **aplicación para gestionar las inscri
 
 En primer lugar, he realizado los archivos HTML y CSS muy simples y claros para el usuario, haciendo uso de HTML semántico. En cuanto a los HTML, son 3 archivos: index.html, ayuda.html y panel.html.
 
-**1.-** El archivo **index.html** está compuesto por:
+#### 1. INDEX.HTML
 
 **HEAD**: tittle, link al css y link a los srcipts js con defer
 
@@ -21,7 +21,8 @@ En primer lugar, he realizado los archivos HTML y CSS muy simples y claros para 
 
 - **Footer**: con el copyright, el año y el nombre del proyecto
 
-**2.-** El archivo **ayuda.html** está compuesto por:
+#### 2. AYUDA.HTML
+
 **HEAD**: tittle, link al css y link al srcipt **ayuda.js** con defer
 
 **BODY**: 
@@ -32,7 +33,8 @@ En primer lugar, he realizado los archivos HTML y CSS muy simples y claros para 
     - **Información del navegador y entorno**: idioma, origen y resolución de pantalla
     - **Cerrar ventana**: un botón para cerrar dicha ventana y volver a la página principal (**index.html**)
 
-**3.-** El archivo **panel.html** está compuesto por:
+#### 3. PANEL.HTML
+
 **HEAD**: tittle, link al css y link  al srcipt **panel.js** con defer
 
 **BODY**: 
