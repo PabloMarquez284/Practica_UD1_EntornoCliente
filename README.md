@@ -1,10 +1,11 @@
 # Practica UD1 - Entorno Cliente
 
-Esta práctica consta de desarrollar una aplicación para gestionar las inscripciones de un evento tecnológico. Dicha aplicación web permite dar de alta y borrar participantes, consultar estadísticas, intercambiar información con un iframe y guardar preferencias mediante cookies.
+Esta práctica consta de desarrollar una **aplicación para gestionar las inscripciones de un evento tecnológico**. Dicha aplicación web permite dar de alta y borrar participantes, consultar estadísticas, intercambiar información con un iframe y guardar preferencias mediante cookies.
 
-En primer lugar, he realizado un html simple, haciendo uso del HTML semántico. Son 3 archivos: index.html, ayuda.html y panel.html.
+En primer lugar, he realizado los archivos HTML y CSS muy simples y claros para el usuario, haciendo uso de HTML semántico. En cuanto a los HTML, son 3 archivos: index.html, ayuda.html y panel.html.
 
-1.- El archivo **index.html** está compuesto por:
+**1.-** El archivo **index.html** está compuesto por:
+
 **HEAD**: tittle, link al css y link a los srcipts js con defer
 
 **BODY**:
@@ -20,7 +21,7 @@ En primer lugar, he realizado un html simple, haciendo uso del HTML semántico. 
 
 - **Footer**: con el copyright, el año y el nombre del proyecto
 
-2.- El archivo **ayuda.html** está compuesto por:
+**2.-** El archivo **ayuda.html** está compuesto por:
 **HEAD**: tittle, link al css y link al srcipt **ayuda.js** con defer
 
 **BODY**: 
@@ -31,7 +32,7 @@ En primer lugar, he realizado un html simple, haciendo uso del HTML semántico. 
     - **Información del navegador y entorno**: idioma, origen y resolución de pantalla
     - **Cerrar ventana**: un botón para cerrar dicha ventana y volver a la página principal (**index.html**)
 
-3.- El archivo **panel.html** está compuesto por:
+**3.-** El archivo **panel.html** está compuesto por:
 **HEAD**: tittle, link al css y link  al srcipt **panel.js** con defer
 
 **BODY**: 
@@ -41,6 +42,6 @@ En primer lugar, he realizado un html simple, haciendo uso del HTML semántico. 
     - **Resumen del evento**: infromación resumida del evento, como el número total de participantes inscritos, por modalidad (presencial y online) y la última inscripción
 
 Para que estas páginas sean visuales y legibles de una manera adecuada para cualquier usuario, he implementado un archivo CSS sencillo con lo siguiente:
-- **Colores¨**: para texto, fondos, botones y mensajes de error
+- **Colores**: para texto, fondos, botones y mensajes de error
 - **Tarjetas**: para organizar mejor la información
 - **Animación**: breve animación al pasar el ratón por un botón
