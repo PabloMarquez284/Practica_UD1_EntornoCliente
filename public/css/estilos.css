@@ -1,0 +1,125 @@
+/* Reseteo profesional */
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* Variables globales para cambiar tema y tamaño desde JS */
+:root {
+    --color-fondo: #f4f6f8;
+    --color-tarjeta: #ffffff;
+    --color-texto: #2c3e50;
+    --color-borde: #cccccc;
+    --tamano-letra: 16px;
+}
+
+/* Clases para Preferencias (Cookies) */
+body.tema-oscuro {
+    --color-fondo: #1e1e1e;
+    --color-tarjeta: #2d2d2d;
+    --color-texto: #f1f1f1;
+    --color-borde: #444444;
+}
+
+body.texto-grande {
+    --tamano-letra: 19px;
+}
+
+/* Estilos Generales */
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    font-size: var(--tamano-letra);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+header, main, footer {
+    max-width: 900px;
+    margin: 0 auto 20px auto;
+}
+
+/* Secciones y tamaño de la página */
+section {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+h1, h2, h3 {
+    margin-top: 0;
+}
+
+/* Contenedores input y article */
+article {
+    margin-bottom: 12px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Todos los campos de texto y desplegables */
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--color-borde);
+    border-radius: 4px;
+    background-color: var(--color-tarjeta);
+    color: var(--color-texto);
+    font-size: inherit;
+}
+
+/* Botones */
+button {
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: inherit;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* Tarjetas creadas desde JS */
+#contenedor-tarjetas {
+    margin-top: 15px;
+}
+
+.tarjeta-participante {
+    border: 1px solid var(--color-borde);
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    background-color: var(--color-tarjeta);
+}
+
+.btn-borrar {
+    background-color: #d9534f;
+    margin-top: 8px;
+}
+
+#mensaje-error-form, #mensaje-error-json {
+    color: #d9534f;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+iframe {
+    width: 100%;
+    height: 180px;
+    border: 1px solid var(--color-borde);
+}
