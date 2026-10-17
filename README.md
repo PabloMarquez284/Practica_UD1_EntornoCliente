@@ -2,9 +2,9 @@
 
 Esta práctica consta de desarrollar una **aplicación para gestionar las inscripciones de un evento tecnológico**. Dicha aplicación web permite dar de alta y borrar participantes, consultar estadísticas, intercambiar información con un iframe y guardar preferencias mediante cookies.
 
-En primer lugar, he realizado los archivos HTML y CSS muy simples y claros para el usuario, haciendo uso de HTML semántico. En cuanto a los HTML, son 3 archivos: index.html, ayuda.html y panel.html.
+En primer lugar, he realizado los archivos **HTML** y **CSS** muy simples y claros para el usuario, haciendo uso de HTML semántico. En cuanto a los HTML, son 3 archivos: index.html, ayuda.html y panel.html.
 
-#### 1. INDEX.HTML
+### 1. INDEX.HTML
 
 **HEAD**: tittle, link al css y link a los srcipts js con defer
 
@@ -21,7 +21,7 @@ En primer lugar, he realizado los archivos HTML y CSS muy simples y claros para 
 
 - **Footer**: con el copyright, el año y el nombre del proyecto
 
-#### 2. AYUDA.HTML
+### 2. AYUDA.HTML
 
 **HEAD**: tittle, link al css y link al srcipt **ayuda.js** con defer
 
@@ -33,7 +33,7 @@ En primer lugar, he realizado los archivos HTML y CSS muy simples y claros para 
     - **Información del navegador y entorno**: idioma, origen y resolución de pantalla
     - **Cerrar ventana**: un botón para cerrar dicha ventana y volver a la página principal (**index.html**)
 
-#### 3. PANEL.HTML
+### 3. PANEL.HTML
 
 **HEAD**: tittle, link al css y link  al srcipt **panel.js** con defer
 
@@ -43,7 +43,7 @@ En primer lugar, he realizado los archivos HTML y CSS muy simples y claros para 
 - **Main**: 
     - **Resumen del evento**: infromación resumida del evento, como el número total de participantes inscritos, por modalidad (presencial y online) y la última inscripción
 
-Para que estas páginas sean visuales y legibles de una manera adecuada para cualquier usuario, he implementado un archivo CSS sencillo con lo siguiente:
+Para que estas páginas sean visuales y legibles de una manera adecuada para cualquier usuario, he implementado un archivo **CSS** sencillo con lo siguiente:
 - **Colores**: para texto, fondos, botones y mensajes de error
 - **Tarjetas**: para organizar mejor la información
 - **Animación**: breve animación al pasar el ratón por un botón
