@@ -16,22 +16,28 @@
             <section id="sec-preferencias" aria-label="Preferencias de usuario">
                 <h2>Preferencias</h2>
                 <form id="form-preferencias">
-                    <label for="select-tema">Tema:</label>
-                    <select id="select-tema" name="tema">
-                        <option value="" selected hidden></option>
-                        <option value="claro">Claro</option>
-                        <option value="oscuro">Oscuro</option>
-                    </select>
+                    <article>
+                        <label for="select-tema">Tema:</label>
+                        <select id="select-tema" name="tema">
+                            <option value="" selected hidden></option>
+                            <option value="claro">Claro</option>
+                            <option value="oscuro">Oscuro</option>
+                        </select>
+                    </article>
 
-                    <label for="select-tamano">Tamaño de fuente:</label>
-                    <select id="select-tamano" name="tamano">
-                        <option value="" selected hidden></option>
-                        <option value="normal">Normal</option>
-                        <option value="grande">Grande</option>
-                    </select>
+                    <article>
+                        <label for="select-tamano">Tamaño de fuente:</label>
+                        <select id="select-tamano" name="tamano">
+                            <option value="" selected hidden></option>
+                            <option value="normal">Normal</option>
+                            <option value="grande">Grande</option>
+                        </select>
+                    </article>
 
-                    <button type="button" id="btn-guardar-pref">Guardar preferencias</button>
-                    <button type="button" id="btn-restablecer-pref">Restablecer</button>
+                    <article>
+                        <button type="button" id="btn-guardar-pref">Guardar preferencias</button>
+                        <button type="button" id="btn-restablecer-pref">Restablecer</button>
+                    </article>
                 </form>
             </section>
 
@@ -49,21 +55,37 @@
                 <span id="mensaje-error-form" hidden></span>
 
                 <form id="form-participante">
-                    <input type="text" id="nombre" name="nombre" required>
-                    <input type="number" id="edad" name="edad" required>
+                    <article>
+                        <label for="nombre">Nombre completo:</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </article>
+
+                    <article>
+                        <label for="edad">Edad:</label>
+                        <input type="number" id="edad" name="edad" required min="0" max="120">
+                    </article>
                     
-                    <select id="tipo" name="tipo">
-                        <option value="estudiante">Estudiante</option>
-                        <option value="profesional">Profesional</option>
-                        <option value="invitado">Invitado</option>
-                    </select>
+                    <article>
+                        <label for="tipo">Tipo de participante:</label>
+                        <select id="tipo" name="tipo">
+                            <option value="estudiante">Estudiante</option>
+                            <option value="profesional">Profesional</option>
+                            <option value="invitado">Invitado</option>
+                        </select>
+                    </article>
 
-                    <select id="modalidad" name="modalidad">
-                        <option value="presencial">Presencial</option>
-                        <option value="online">Online</option>
-                    </select>
+                    <article>
+                        <label for="modalidad">Modalidad:</label>
+                        <select id="modalidad" name="modalidad">
+                            <option value="presencial">Presencial</option>
+                            <option value="online">Online</option>
+                        </select>
+                    </article>
 
-                    <input type="number" id="experiencia" name="experiencia" step="0.1" required>
+                    <article>
+                        <label for="experiencia">Años de experiencia:</label>
+                        <input type="number" id="experiencia" name="experiencia" step="0.1" required min="0" max="10">
+                    </article>
 
                     <button type="submit">Añadir Participante</button>
                 </form>
@@ -123,12 +145,12 @@
             <!-- Gestión de Datos JSON -->
             <section id="sec-json">
                 <h2>Gestión de Datos</h2>
-                <article>
+                <article class="bloque-json">
                     <label for="textarea-json">Colección de datos en formato JSON:</label><br>
                     <textarea id="textarea-json" rows="8" cols="60" placeholder="Exporta o pega datos aquí..."></textarea>
                 </article>
 
-                <article>
+                <article class="bloque-json-botones">
                     <button type="button" id="btn-exportar-json">Exportar JSON</button>
                     <button type="button" id="btn-importar-json">Importar JSON</button>
                 </article>
@@ -144,9 +166,7 @@
         </main>
 
         <footer>
-            <article>
-                <span>&copy; 2026 Gestor de Participantes</span>
-            </article>
+            <p>&copy; 2026 Gestor de Participantes</p>
         </footer>
     </body>
 </html>
