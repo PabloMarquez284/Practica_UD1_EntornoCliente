@@ -48,42 +48,24 @@
 
                 <span id="mensaje-error-form" hidden></span>
 
-                <form id="form-alta" novalidate>
-                    <article>
-                        <label for="input-nombre">Nombre completo:</label>
-                        <input type="text" id="input-nombre" name="nombre">
-                    </article>
+                <form id="form-participante">
+                    <input type="text" id="nombre" name="nombre" required>
+                    <input type="number" id="edad" name="edad" required>
+                    
+                    <select id="tipo" name="tipo">
+                        <option value="estudiante">Estudiante</option>
+                        <option value="profesional">Profesional</option>
+                        <option value="invitado">Invitado</option>
+                    </select>
 
-                    <article>
-                        <label for="input-edad">Edad:</label>
-                        <input type="text" id="input-edad" name="edad">
-                    </article>
+                    <select id="modalidad" name="modalidad">
+                        <option value="presencial">Presencial</option>
+                        <option value="online">Online</option>
+                    </select>
 
-                    <article>
-                        <label for="select-tipo">Tipo de participante:</label>
-                        <select id="select-tipo" name="tipo">
-                            <option value="" selected hidden></option>
-                            <option value="estudiante">Estudiante</option>
-                            <option value="profesional">Profesional</option>
-                            <option value="invitado">Invitado</option>
-                        </select>
-                    </article>
+                    <input type="number" id="experiencia" name="experiencia" step="0.1" required>
 
-                    <article>
-                        <label for="select-modalidad">Modalidad:</label>
-                        <select id="select-modalidad" name="modalidad">
-                            <option value="" selected hidden></option>
-                            <option value="presencial">Presencial</option>
-                            <option value="online">Online</option>
-                        </select>
-                    </article>
-
-                    <article>
-                        <label for="input-experiencia">Años de experiencia:</label>
-                        <input type="text" id="input-experiencia" name="experiencia">
-                    </article>
-
-                    <button type="submit" id="btn-alta">Dar de alta</button>
+                    <button type="submit">Añadir Participante</button>
                 </form>
             </section>
 
@@ -119,22 +101,22 @@
             </section>
 
             <!-- Estadísticas -->
-            <section id="sec-estadisticas">
-                <h2>Estadísticas del Evento</h2>
+            <section id="seccion-estadisticas">
+                <h2>Estadísticas</h2>
                 <ul>
-                    <li><b>Total de participantes:</b> <span id="stat-total">Sin datos</span></li>
-                    <li><b>Menores de edad:</b> <span id="stat-menores">Sin datos</span></li>
-                    <li><b>Mayores de edad:</b> <span id="stat-mayores">Sin datos</span></li>
-                    <li><b>Edad media:</b> <span id="stat-edad-media">Sin datos</span></li>
-                    <li><b>Edad mínima:</b> <span id="stat-edad-minima">Sin datos</span></li>
-                    <li><b>Edad máxima:</b> <span id="stat-edad-maxima">Sin datos</span></li>
-                    <li><b>Modalidad Presencial:</b> <span id="stat-mod-presencial">Sin datos</span></li>
-                    <li><b>Modalidad Online:</b> <span id="stat-mod-online">Sin datos</span></li>
-                    <li><b>Tipo Estudiante:</b> <span id="stat-tipo-estudiante">Sin datos</span></li>
-                    <li><b>Tipo Profesional:</b> <span id="stat-tipo-profesional">Sin datos</span></li>
-                    <li><b>Tipo Invitado:</b> <span id="stat-tipo-invitado">Sin datos</span></li>
-                    <li><b>Experiencia media (Presenciales):</b> <span id="stat-exp-media-presencial">Sin datos</span></li>
-                    <li><b>Primer menor de edad registrado:</b> <span id="stat-primer-menor">Sin datos</span></li>
+                    <li>Total participantes: <span id="total">0</span></li>
+                    <li>Menores de edad: <span id="menores">0</span></li>
+                    <li>Mayores de edad: <span id="mayores">0</span></li>
+                    <li>Edad media: <span id="edadMedia">0</span></li>
+                    <li>Edad mínima: <span id="edadMin">0</span></li>
+                    <li>Edad máxima: <span id="edadMax">0</span></li>
+                    <li>Presenciales: <span id="presenciales">0</span></li>
+                    <li>Online: <span id="online">0</span></li>
+                    <li>Estudiantes: <span id="estudiantes">0</span></li>
+                    <li>Profesionales: <span id="profesionales">0</span></li>
+                    <li>Invitados: <span id="invitados">0</span></li>
+                    <li>Exp. media presencial: <span id="expMediaPresencial">Sin datos</span></li>
+                    <li>Primer menor de edad: <span id="primerMenor">Sin datos</span></li>
                 </ul>
             </section>
 

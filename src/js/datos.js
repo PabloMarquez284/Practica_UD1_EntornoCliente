@@ -9,7 +9,7 @@ const participantesIniciales = [
     experiencia: 4
   },
   {
-    id: 483721,
+    id: 846782,
     nombre: "Carlos Hermosa",
     edad: 20,
     tipo: "invitado",
@@ -18,7 +18,7 @@ const participantesIniciales = [
     experiencia: 6
   },
   {
-    id: 483721,
+    id: 663467,
     nombre: "Emilio Cózar",
     edad: 36,
     tipo: "profesional",
@@ -28,6 +28,7 @@ const participantesIniciales = [
   }
 ];
 
+// Esta función valida los datos de un participante y devuelve un objeto con la validez y los errores encontrados
 function validarParticipante(datos) {
     const errores = [];
 
@@ -76,6 +77,7 @@ function validarParticipante(datos) {
     };
 }
 
+// Esta función genera un ID único para un nuevo participante
 function generarId(participantes) {
     let intentos = 0;
     const maxIntentos = 100;
@@ -105,6 +107,7 @@ function generarId(participantes) {
     return null;
 }
 
+// Esta función calcula estadísticas a partir de la lista de participantes
 function calcularEstadisticas(participantes) {
     // Caso de lista vacía o sin datos
     if (!participantes || participantes.length === 0) {
