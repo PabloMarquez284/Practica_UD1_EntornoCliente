@@ -98,6 +98,66 @@ function renderizarEstadisticas() {
     }
 }
 
-// Llamar a las funciones de renderizado al cargar la página
-renderizarTarjetas(participantes);
-renderizarEstadisticas();
+// Formulario de alta de participantes
+const formParticipante = document.getElementById("form-participante");
+const mensajeErrorForm = document.getElementById("mensaje-error-form");
+
+// Escuchar el evento submit
+formParticipante.addEventListener("submit", function (e) {
+    // Evitar que la página se recargue
+    e.preventDefault();
+
+    // Extraer y formatear los datos de los inputs
+    const nombreInput = document.getElementById("nombre").value.trim();
+    const edadInput = parseInt(document.getElementById("edad").value, 10);
+    const tipoInput = document.getElementById("tipo").value;
+    const modalidadInput = document.getElementById("modalidad").value;
+    const expInput = parseFloat(document.getElementById("experiencia").value);
+
+    // Empaquetar los datos para la validación
+    const datosFormulario = {
+        nombre: nombreInput,
+        edad: edadInput,
+        tipo: tipoInput,
+        modalidad: modalidadInput,
+        experiencia: expInput
+    };
+
+    // Validar con datos.js
+    const resultado = validarParticipante(datosFormulario);
+
+    // Si no es válido, mostramos los errores
+    if (!resultado.esValido) {
+        mensajeErrorForm.textContent = resultado.errores.join(" | ");
+        mensajeErrorForm.hidden = false; // Nos aseguramos de mostrarlo
+        return;
+    }
+
+    // Si es válido, ocultamos y limpiamos el mensaje de error
+    mensajeErrorForm.textContent = "";
+    mensajeErrorForm.hidden = true;
+
+    // Generar ID único
+    const nuevoId = generarId(participantes);
+
+    // Crear el objeto participante definitivo
+    const nuevoParticipante = {
+        id: nuevoId,
+        nombre: nombreInput,
+        edad: edadInput,
+        tipo: tipoInput,
+        modalidad: modalidadInput,
+        experiencia: expInput,
+        fechaInscripcion: new Date().toISOString()
+    };
+
+    // Guardar en la colección global
+    participantes.push(nuevoParticipante);
+
+    // Renderizar la interfaz (tarjetas y estadísticas)
+    renderizarTarjetas(participantes);
+    renderizarEstadisticas();
+
+    // Limpiar el formulario
+    formParticipante.reset();
+});
