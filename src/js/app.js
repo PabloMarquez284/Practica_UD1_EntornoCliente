@@ -57,7 +57,7 @@ function crearTarjeta(participante) {
                 return p.id !== participante.id;
             });
 
-            // Refrescamos la pantalla y los cálculos
+            // Renderizamos las tarjetas y estadísticas después de borrar
             renderizarTarjetas(participantes);
             renderizarEstadisticas();
         }
@@ -154,7 +154,7 @@ formParticipante.addEventListener("submit", function (e) {
     // Guardar en la colección global
     participantes.push(nuevoParticipante);
 
-    // Renderizar la interfaz (tarjetas y estadísticas)
+    // Renderizar las tarjetas y estadísticas actualizadas
     renderizarTarjetas(participantes);
     renderizarEstadisticas();
 
@@ -188,10 +188,112 @@ if (resultado.length === 0) {
 } else {
     mensajeVacio.hidden = true;
 }
-    // Volver a renderizar las tarjetas pasando solo el array filtrado
+    // Renderizar las tarjetas filtradas
     renderizarTarjetas(resultado);
 }
 
 // Escuchadores de eventos para los filtros
 document.getElementById("input-buscar-nombre").addEventListener("input", aplicarFiltros);
 document.getElementById("select-filtro-modalidad").addEventListener("change", aplicarFiltros);
+
+//Esta funcion aplica las preferencias de tema y tamaño de fuente guardadas en localStorage
+function aplicarPreferencias() {
+    const tema = localStorage.getItem("tema");
+    const tamano = localStorage.getItem("tamano");
+
+    // Aplicar tema
+    if (tema) {
+        document.body.classList.remove("tema-claro", "tema-oscuro");
+        document.body.classList.add("tema-" + tema);
+    } else {
+        document.body.classList.remove("tema-claro", "tema-oscuro");
+    }
+
+    // Aplicar tamaño de fuente
+    if (tamano) {
+        document.body.style.fontSize = tamano;
+    } else {
+        document.body.style.fontSize = "";
+    }
+
+    // Actualizar los selects en el formulario de preferencias
+    const selectTema = document.getElementById("select-tema");
+    const selectTamano = document.getElementById("select-tamano");
+
+    // Sincronizar el valor de los selects con lo que hay en localStorage
+    if (tema && selectTema) selectTema.value = tema;
+    if (tamano && selectTamano) selectTamano.value = tamano;
+}
+
+// Evento para Guardar Preferencias
+document.getElementById("btn-guardar-pref").addEventListener("click", function () {
+    const temaSeleccionado = document.getElementById("select-tema").value;
+    const tamanoSeleccionado = document.getElementById("select-tamano").value;
+
+    if (temaSeleccionado) {
+        localStorage.setItem("tema", temaSeleccionado);
+    } else {
+        localStorage.removeItem("tema");
+    }
+
+    if (tamanoSeleccionado) {
+        localStorage.setItem("tamano", tamanoSeleccionado);
+    } else {
+        localStorage.removeItem("tamano");
+    }
+
+    // Aplicar los cambios 
+    aplicarPreferencias();
+});
+
+// Evento para Restablecer Preferencias
+document.getElementById("btn-restablecer-pref").addEventListener("click", function () {
+    localStorage.removeItem("tema");
+    localStorage.removeItem("tamano");
+
+    document.getElementById("select-tema").value = "";
+    document.getElementById("select-tamano").value = "";
+
+    // Volvemos a aplicar los cambios
+    aplicarPreferencias();
+});
+
+// Evento para exportar JSON
+document.getElementById("btn-exportar-json").addEventListener("click", function () {
+    const textarea = document.getElementById("textarea-json");
+    // Convertimos el array global a texto JSON con formato indentado (2 espacios)
+    textarea.value = JSON.stringify(participantes, null, 2);
+});
+
+// Evento para importar JSON
+document.getElementById("btn-importar-json").addEventListener("click", function () {
+    const textarea = document.getElementById("textarea-json");
+    const mensajeErrorJson = document.getElementById("mensaje-error-json");
+
+    try {
+        // Intentamos parsear el texto a objeto/array JS
+        const datosImportados = JSON.parse(textarea.value);
+
+        // 2. Comprobamos si es un Array
+        if (!Array.isArray(datosImportados)) {
+            mensajeErrorJson.textContent = "Error: El JSON importado no es un array de participantes";
+            mensajeErrorJson.hidden = false;
+        } else {
+            participantes = datosImportados;
+            renderizarTarjetas(participantes);
+            renderizarEstadisticas();
+            mensajeErrorJson.hidden = true;
+            textarea.value = ""; // Limpiar el textarea después de importar
+        }
+
+    } catch (error) {
+        // Si hay un error de parseo, lo mostramos
+        mensajeErrorJson.textContent = "Error al importar JSON: " + error.message;
+        mensajeErrorJson.hidden = false;
+    }
+});
+
+// Al cargar la página, renderizamos las tarjetas y estadísticas iniciales y aplicamos las preferencias guardadas
+renderizarTarjetas(participantes);
+renderizarEstadisticas();
+aplicarPreferencias();
