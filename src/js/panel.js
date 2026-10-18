@@ -18,26 +18,32 @@ window.addEventListener("message", function (evento) {
     if (typeof total !== "number" || typeof presencial !== "number" || typeof online !== "number") return;
 
     // Obtener los contenedores del DOM de panel.html
+    const estado = document.getElementById("panel-estado");
+    const listaDatos = document.getElementById("panel-datos");
     const contTotal = document.getElementById("panel-total");
-    const contModalidades = document.getElementById("panel-modalidades");
-    const contUltimo = document.getElementById("panel-ultimo");
+    const contPresenciales = document.getElementById("panel-presenciales");
+    const contOnline = document.getElementById("panel-online");
+    const contUltimoNombre = document.getElementById("panel-ultimo-nombre");
+    const contUltimoFecha = document.getElementById("panel-ultimo-fecha");
 
     // Si no hay inscripciones
-    if (!datos.resumen || datos.resumen.total === 0) {
-        if (contTotal) contTotal.textContent = "Sin inscripciones";
-        if (contModalidades) contModalidades.textContent = "-";
-        if (contUltimo) contUltimo.textContent = "-";
+    if (datos.resumen.total === 0) {
+        if (estado) {
+            estado.textContent = "Sin inscripciones";
+            estado.hidden = false;
+        }
+        if (listaDatos) listaDatos.hidden = true;
         return;
     }
 
-    // Si hay datos válidos, actualizar el panel
-    if (contTotal) contTotal.textContent = datos.resumen.total;
-    
-    if (contModalidades) {
-        contModalidades.textContent = `Presencial: ${datos.resumen.presencial} | Online: ${datos.resumen.online}`;
-    }
+    // Si hay datos válidos: ocultar el mensaje "Sin inscripciones" y mostrar la lista
+    if (estado) estado.hidden = true;
+    if (listaDatos) listaDatos.hidden = false;
 
-    if (contUltimo) {
-        contUltimo.textContent = `${datos.resumen.ultimoNombre} (${datos.resumen.ultimoFecha})`;
-    }
+    // Actualizar los valores en pantalla
+    if (contTotal) contTotal.textContent = datos.resumen.total;
+    if (contPresenciales) contPresenciales.textContent = datos.resumen.presencial;
+    if (contOnline) contOnline.textContent = datos.resumen.online;
+    if (contUltimoNombre) contUltimoNombre.textContent = datos.resumen.ultimoNombre;
+    if (contUltimoFecha) contUltimoFecha.textContent = datos.resumen.ultimoFecha;
 });

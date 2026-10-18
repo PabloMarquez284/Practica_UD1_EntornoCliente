@@ -423,3 +423,4 @@ if (btnCerrarAyudaMain) {
 renderizarTarjetas(participantes);
 renderizarEstadisticas();
 aplicarPreferencias();
+enviarDatosAlPanel();
