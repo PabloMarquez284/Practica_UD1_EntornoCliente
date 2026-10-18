@@ -52,7 +52,7 @@ Para que estas páginas sean visuales y legibles de una manera adecuada para cua
 
 Una vez terminada la maquetación y la estructura de estilos, pasamos a la programación del comportamiento y la lógica de la aplicación en **JavaScript**, la cual está dividida en 4 archivos según sus responsabilidades: datos.js, app.js, ayuda.js y panel.js.
 
-### 4. DATOS.JS
+### 1. DATOS.JS
 
 Este archivo contiene la lista de participantes en memoria (**participantesIniciales**) y la lógica pura de negocio y cálculo. Cumple estrictamente con la regla de no acceder ni modificar el DOM directamente, devolviendo siempre datos procesados. Se compone de las siguientes funciones:
 
@@ -61,7 +61,7 @@ Este archivo contiene la lista de participantes en memoria (**participantesInici
 * **calcularEstadisticas(participantes)**: realiza todos los cálculos métricos de la colección mediante bucles **for...of**. Si la lista está vacía, establece las medias. En el cálculo de la experiencia presencial salta los participantes online con **continue**, y localiza al primer menor de edad interrumpiendo el bucle con **break**. Devuelve las medias formateadas con dos decimales mediante **.toFixed(2)**
 
 
-### 5. APP.JS
+### 2. APP.JS
 
 Es el archivo principal de control de la página **index.html**. Se encarga de gestionar la interacción del usuario con la interfaz, actualizar el DOM y coordinar las distintas funciones:
 
@@ -76,17 +76,17 @@ Es el archivo principal de control de la página **index.html**. Se encarga de g
 * **Ventana de Ayuda Externa**: abre **ayuda.html** usando **window.open()**, guardando la referencia en la variable **ventanaAyuda** para reenfocarla con **.focus()** si ya estaba abierta y avisando al usuario en caso de que los emergentes estén bloqueados
 
 
-### 6. AYUDA.JS
+### 3. AYUDA.JS
 
-Gestiona el funcionamiento de la ventana emergente de ayuda (**ayuda.html**):
+Este archivo gestiona el funcionamiento de la ventana emergente de ayuda (**ayuda.html**):
 
 * Obtiene y muestra los metadatos del navegador leyendo **navigator.language (idioma)**, **location.origin** (origen de la aplicación) y **screen.width** con **screen.height** (resolución de pantalla)
 * Añade la funcionalidad al botón de cierre para cerrar la ventana secundaria mediante **window.close()**
 
 
-### 7. PANEL.JS
+### 4. PANEL.JS
 
-Se ejecuta exclusivamente dentro del iframe (**panel.html**):
+Este archivo se ejecuta exclusivamente dentro del iframe (**panel.html**):
 
 * Al cargarse la página, envía un mensaje inicial **PanelListo** a la ventana madre mediante **window.parent.postMessage()**
 * Escucha los mensajes de actualización filtrando y validando la procedencia (**event.origin** y **event.source**)
