@@ -161,3 +161,37 @@ formParticipante.addEventListener("submit", function (e) {
     // Limpiar el formulario
     formParticipante.reset();
 });
+
+
+// Esta función aplica los filtros de búsqueda y modalidad a la lista de participantes
+function aplicarFiltros() {
+    const textoBuscar = document.getElementById("input-buscar-nombre").value.trim().toLowerCase();
+    const modalidadFiltro = document.getElementById("select-filtro-modalidad").value;
+    const mensajeVacio = document.getElementById("mensaje-busqueda-vacia");
+
+    // Filtrar la lista de participantes según los criterios
+    const resultado = participantes.filter(function (p) {
+    
+    // Comprobar si el nombre incluye el texto
+    const coincideNombre = p.nombre.toLowerCase().includes(textoBuscar);
+
+    // Comprobar si la modalidad coincide o si no hay filtro seleccionado / es "todas"
+    const coincideModalidad = (modalidadFiltro === "" || modalidadFiltro === "todas") || p.modalidad === modalidadFiltro;
+
+    // Se deben cumplir ambas condiciones
+    return coincideNombre && coincideModalidad;
+});
+
+// Mostrar u ocultar el aviso si no hay coincidencias
+if (resultado.length === 0) {
+    mensajeVacio.hidden = false;
+} else {
+    mensajeVacio.hidden = true;
+}
+    // Volver a renderizar las tarjetas pasando solo el array filtrado
+    renderizarTarjetas(resultado);
+}
+
+// Escuchadores de eventos para los filtros
+document.getElementById("input-buscar-nombre").addEventListener("input", aplicarFiltros);
+document.getElementById("select-filtro-modalidad").addEventListener("change", aplicarFiltros);
