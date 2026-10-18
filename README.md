@@ -91,3 +91,26 @@ Este archivo se ejecuta exclusivamente dentro del iframe (**panel.html**):
 * Al cargarse la página, envía un mensaje inicial **PanelListo** a la ventana madre mediante **window.parent.postMessage()**
 * Escucha los mensajes de actualización filtrando y validando la procedencia (**event.origin** y **event.source**)
 * Actualiza su propio DOM mostrando el total de inscritos, el desglose por modalidad y el nombre junto a la fecha de la última inscripción realizada. Si no hay datos, indica "Sin inscripciones"
+
+
+### CASOS DE PRUEBA Y VALIDACIÓN EN EL NAVEGADOR
+
+Para comprobar que todas las funcionalidades de la aplicación responden correctamente en tiempo de ejecución, se han realizado diversas pruebas directamente sobre la **interfaz web**. Se ha verificado el alta exitosa de participantes, la prevención de datos inválidos en el formulario mediante alertas explicativas, la cancelación de eliminaciones sin alterar la colección, la búsqueda combinada con casos de listas vacías, la persistencia de preferencias tras recargar la página, el manejo de errores de sintaxis en la importación de cadenas JSON mediante bloques **try/catch**, el reenfoque de la ventana de ayuda evadiendo bloqueos emergentes y la transmisión segura de métricas con el **iframe**.
+
+
+### RELACIÓN DE CONTENIDOS TEÓRICOS DE LAS SESIONES
+
+La arquitectura de la aplicación se basa en un modelo cliente-servidor donde la ejecución ocurre íntegramente en el navegador del usuario. Para garantizar un renderizado fluido sin bloquear el parseo del HTML, los scripts se cargan usando el atributo **defer**. A nivel de código, he usado declaraciones con **let** y **const** para trabajar con ámbitos de bloque y evitar los problemas *hoisting* propios de **var**. Además, en las validaciones de condiciones he usado  valores *truthy* y *falsy*, diferenciando el operador de alternativa lógica **||** del operador de fusión nula **??** para preservar ceros o cadenas vacías válidas.
+
+Por otro lado, la comunicación bidireccional entre la página principal y el panel integrado en el iframe de **panel.html** respeta las restricciones de seguridad entre orígenes. Esto se logra enviando los mensajes a través de **postMessage()** especificando explícitamente el origen de destino mediante **window.location.origin**. En el receptor, he comprobado que la procedencia (**event.origin**) y la fuente (**event.source**) coincidan exactamente con la propia ventana, evitando cualquier vulnerabilidad por inyección de datos de terceros.
+
+
+### USO DE LA IA EN EL DESARROLLO
+
+Durante la creación del proyecto he contado con el apoyo continuo de un asistente de **inteligencia artificial (Gemini)**. Dicha herramienta me ha servido para estructurar paso a paso la arquitectura de la aplicación, guiar en la maquetación semántica y sugerir buenas prácticas de manipulación limpia del DOM sin **innerHTML**. Asimismo, me ha facilitado la resolución de errores en la sintaxis de las cookies, la lógica de validaciones avanzadas y la optimización de los bucles para garantizar un código eficiente e intuitivo.
+
+
+### EVIDENCIAS DE DEPURACIÓN Y RED
+
+* **Evidencia de Depuración**: Se colocó un punto de interrupción (*breakpoint*) en la función **validarParticipante()** dentro de **datos.js**. Al enviar el formulario, la ejecución se detuvo en la pestaña *Sources* del navegador, permitiendo inspeccionar paso a paso el objeto de datos recibidos y verificar la longitud del nombre y los rangos de edad.
+* **Evidencia de Red (Network)**: En la pestaña *Network* de las herramientas de desarrollo se comprobó la descarga de todos los recursos locales (**index.html**, **estilos.css**, **app.js**, **datos.js**). Todas las peticiones devolvieron un código de estado **200**, confirmando la carga diferida e independizada de los scripts.
